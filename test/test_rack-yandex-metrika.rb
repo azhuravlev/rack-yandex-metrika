@@ -4,7 +4,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
 
   context "Asyncronous" do
     context "default" do
-      setup { mock_app :async => true, :counter_id => '111' }
+      setup { mock_app :async => true, :counter_id => 111 }
       should "show asyncronous tracker" do
         get "/"
         assert_match %r{\.push\(function\(\)}, last_response.body
@@ -27,7 +27,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "webvisor" do
-      setup { mock_app :async => true, :counter_id => '111', :webvisor => true }
+      setup { mock_app :async => true, :counter_id => 111, :webvisor => true }
       should "add webvisor support" do
         get "/"
         assert_match %r{webvisor:true}, last_response.body
@@ -36,7 +36,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "clickmap" do
-      setup { mock_app :async => true, :counter_id => '111', :clickmap => true }
+      setup { mock_app :async => true, :counter_id => 111, :clickmap => true }
       should "add clickmap support" do
         get "/"
         assert_match %r{clickmap:true}, last_response.body
@@ -45,7 +45,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "trackLinks" do
-      setup { mock_app :async => true, :counter_id => '111', :trackLinks => true }
+      setup { mock_app :async => true, :counter_id => 111, :trackLinks => true }
       should "add trackLinks support" do
         get "/"
         assert_match %r{trackLinks:true}, last_response.body
@@ -54,7 +54,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "accurateTrackBounce" do
-      setup { mock_app :async => true, :counter_id => '111', :accurateTrackBounce => true }
+      setup { mock_app :async => true, :counter_id => 111, :accurateTrackBounce => true }
       should "add accurateTrackBounce support" do
         get "/"
         assert_match %r{accurateTrackBounce:true}, last_response.body
@@ -63,7 +63,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "trackHash" do
-      setup { mock_app :async => true, :counter_id => '111', :trackHash => true }
+      setup { mock_app :async => true, :counter_id => 111, :trackHash => true }
       should "add trackHash support" do
         get "/"
         assert_match %r{trackHash:true}, last_response.body
@@ -74,7 +74,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
 
   context "Syncronous" do
     context "default" do
-      setup { mock_app :async => false, :counter_id => '222' }
+      setup { mock_app :async => false, :counter_id => 222 }
       should "show non-asyncronous tracker" do
         get "/"
         assert_match %r{var yaCounter222}, last_response.body
@@ -84,7 +84,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "webvisor" do
-      setup { mock_app :async => false, :counter_id => '222', :webvisor => true }
+      setup { mock_app :async => false, :counter_id => 222, :webvisor => true }
       should "add webvisor support" do
         get "/"
         assert_match %r{webvisor:true}, last_response.body
@@ -93,7 +93,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "clickmap" do
-      setup { mock_app :async => false, :counter_id => '222', :clickmap => true }
+      setup { mock_app :async => false, :counter_id => 222, :clickmap => true }
       should "add clickmap support" do
         get "/"
         assert_match %r{clickmap:true}, last_response.body
@@ -102,7 +102,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "trackLinks" do
-      setup { mock_app :async => false, :counter_id => '222', :trackLinks => true }
+      setup { mock_app :async => false, :counter_id => 222, :trackLinks => true }
       should "add trackLinks support" do
         get "/"
         assert_match %r{trackLinks:true}, last_response.body
@@ -111,7 +111,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "accurateTrackBounce" do
-      setup { mock_app :async => false, :counter_id => '222', :accurateTrackBounce => true }
+      setup { mock_app :async => false, :counter_id => 222, :accurateTrackBounce => true }
       should "add accurateTrackBounce support" do
         get "/"
         assert_match %r{accurateTrackBounce:true}, last_response.body
@@ -120,7 +120,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
     end
 
     context "trackHash" do
-      setup { mock_app :async => false, :counter_id => '222', :trackHash => true }
+      setup { mock_app :async => false, :counter_id => 222, :trackHash => true }
       should "add trackHash support" do
         get "/"
         assert_match %r{trackHash:true}, last_response.body
