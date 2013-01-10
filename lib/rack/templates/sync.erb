@@ -1,0 +1,11 @@
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter<%= @options[:counter_id].to_i %> = new Ya.Metrika({id:<%= @options[:counter_id].to_i %><% if @options[:webvisor] %>,
+webvisor:true<% end %><% if @options[:clickmap] %>,
+clickmap:true<% end %><% if @options[:trackLinks] %>,
+trackLinks:true<% end %><% if @options[:accurateTrackBounce] %>,
+accurateTrackBounce:true<% end %><% if @options[:trackHash] %>,
+trackHash:true<% end %>});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/<%= @options[:counter_id].to_i %>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
