@@ -18,21 +18,21 @@ gem 'rack-yandex-metrika'
 
 ```ruby
 ## app.rb
-use Rack::YandexMetrika, :counter_id => 'xxxxxxxx'
+use Rack::YandexMetrika, :counter_id => 00000000
 ```
 
 #### Padrino
 
 ```ruby
 ## app/app.rb
-use Rack::YandexMetrika, :counter_id => 'xxxxxxxx'
+use Rack::YandexMetrika, :counter_id => 00000000
 ```
 
 #### Rails
 
 ```ruby
 ## environment.rb:
-config.middleware.use Rack::YandexMetrika, :counter_id => 'xxxxxxxx'
+config.middleware.use Rack::YandexMetrika, :counter_id => 00000000
 ```
 
 ### Options
