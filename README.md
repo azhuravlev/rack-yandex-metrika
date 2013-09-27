@@ -59,6 +59,7 @@ In your application controller, you may track an event. For example:
 
 ```ruby
 ya_metrika_reach_goal("GOAL_NAME", {:option1 => "one", :option2 => "two"})
+```
 
 ## Thread Safety
 
