@@ -9,8 +9,8 @@ class TestRackYandexMetrika < Test::Unit::TestCase
         get "/"
         assert_match %r{\.push\(function\(\)}, last_response.body
         assert_match %r{w\.yaCounter111}, last_response.body
-        assert_match %r{</noscript>\n</body>}, last_response.body
-        assert_equal "764", last_response.headers['Content-Length']
+        assert_match %r{</noscript>\n</head><body>}, last_response.body
+        assert_equal "727", last_response.headers['Content-Length']
       end
 
       should "not add tracker to non-html content-type" do
@@ -19,10 +19,10 @@ class TestRackYandexMetrika < Test::Unit::TestCase
         assert_match %r{Xml here}, last_response.body
       end
 
-      should "not add without </body>" do
-        get "/head"
+      should "not add without </head>" do
+        get "/body"
         assert_no_match %r{yaCounter}, last_response.body
-        assert_match %r{<head>Header only</head>}, last_response.body
+        assert_match %r{bob here}, last_response.body
       end
     end
 
@@ -31,7 +31,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add webvisor support" do
         get "/"
         assert_match %r{webvisor:true}, last_response.body
-        assert_equal "779", last_response.headers['Content-Length']
+        assert_equal "742", last_response.headers['Content-Length']
       end
     end
 
@@ -40,7 +40,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add clickmap support" do
         get "/"
         assert_match %r{clickmap:true}, last_response.body
-        assert_equal "779", last_response.headers['Content-Length']
+        assert_equal "742", last_response.headers['Content-Length']
       end
     end
 
@@ -49,7 +49,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackLinks support" do
         get "/"
         assert_match %r{trackLinks:true}, last_response.body
-        assert_equal "781", last_response.headers['Content-Length']
+        assert_equal "744", last_response.headers['Content-Length']
       end
     end
 
@@ -58,7 +58,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add accurateTrackBounce support" do
         get "/"
         assert_match %r{accurateTrackBounce:true}, last_response.body
-        assert_equal "790", last_response.headers['Content-Length']
+        assert_equal "753", last_response.headers['Content-Length']
       end
     end
 
@@ -67,7 +67,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackHash support" do
         get "/"
         assert_match %r{trackHash:true}, last_response.body
-        assert_equal "780", last_response.headers['Content-Length']
+        assert_equal "743", last_response.headers['Content-Length']
       end
     end
   end
@@ -79,7 +79,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
         get "/"
         assert_match %r{var yaCounter222}, last_response.body
         assert_match %r{</noscript>\n</body>}, last_response.body
-        assert_equal "356", last_response.headers['Content-Length']
+        assert_equal "790", last_response.headers['Content-Length']
       end
     end
 
@@ -88,7 +88,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add webvisor support" do
         get "/"
         assert_match %r{webvisor:true}, last_response.body
-        assert_equal "371", last_response.headers['Content-Length']
+        assert_equal "805", last_response.headers['Content-Length']
       end
     end
 
@@ -97,7 +97,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add clickmap support" do
         get "/"
         assert_match %r{clickmap:true}, last_response.body
-        assert_equal "371", last_response.headers['Content-Length']
+        assert_equal "805", last_response.headers['Content-Length']
       end
     end
 
@@ -106,7 +106,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackLinks support" do
         get "/"
         assert_match %r{trackLinks:true}, last_response.body
-        assert_equal "373", last_response.headers['Content-Length']
+        assert_equal "807", last_response.headers['Content-Length']
       end
     end
 
@@ -115,7 +115,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add accurateTrackBounce support" do
         get "/"
         assert_match %r{accurateTrackBounce:true}, last_response.body
-        assert_equal "382", last_response.headers['Content-Length']
+        assert_equal "816", last_response.headers['Content-Length']
       end
     end
 
@@ -124,7 +124,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackHash support" do
         get "/"
         assert_match %r{trackHash:true}, last_response.body
-        assert_equal "372", last_response.headers['Content-Length']
+        assert_equal "806", last_response.headers['Content-Length']
       end
     end
   end

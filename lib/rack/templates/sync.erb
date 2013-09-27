@@ -1,11 +1,28 @@
 <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
 <script type="text/javascript">
-try { var yaCounter<%= @options[:counter_id].to_i %> = new Ya.Metrika({id:<%= @options[:counter_id].to_i %><% if @options[:webvisor] %>,
-webvisor:true<% end %><% if @options[:clickmap] %>,
-clickmap:true<% end %><% if @options[:trackLinks] %>,
-trackLinks:true<% end %><% if @options[:accurateTrackBounce] %>,
-accurateTrackBounce:true<% end %><% if @options[:trackHash] %>,
-trackHash:true<% end %>});
-} catch(e) { }
+  try {
+    var yaCounter<%= @options[:counter_id].to_i %> = new Ya.Metrika({id:<%= @options[:counter_id].to_i %>
+                                                                    <% if @options[:webvisor] %>, webvisor:true<% end %>
+                                                                    <% if @options[:clickmap] %>, clickmap:true<% end %>
+                                                                    <% if @options[:trackLinks] %>, trackLinks:true<% end %>
+                                                                    <% if @options[:accurateTrackBounce] %>, accurateTrackBounce:true<% end %>
+                                                                    <% if @options[:trackHash] %>, trackHash:true<% end %>});
+    
+    <% if @options[:counter_params] %>
+      <% @options[:counter_params].each do |var| %>        
+        yaCounter<%= @options[:counter_id].to_i %>.params(<%= var.write() %>);
+      <% end %>
+    <% end %> 
+    <% if @options[:reached_goals] %>
+      var yaParams = null;
+      <% @options[:reached_goals].each do |var|%>        
+        yaCounter<%= @options[:counter_id].to_i %>.reachGoal(<%= var.write() %>);
+      <% end %>
+    <% end %>  
+  } catch(e) { }
 </script>
-<noscript><div><img src="//mc.yandex.ru/watch/<%= @options[:counter_id].to_i %>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript>
+  <div>
+    <img src="//mc.yandex.ru/watch/<%= @options[:counter_id].to_i %>" style="position:absolute; left:-9999px;" alt="" />
+  </div>
+</noscript>

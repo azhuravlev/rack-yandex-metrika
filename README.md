@@ -46,6 +46,20 @@ config.middleware.use Rack::YandexMetrika, :counter_id => 00000000
 
 If you are not sure what's best, go with the defaults, and read here if you should opt-out.
 
+## Counter param
+
+In your application controller, you may track visit params. For example:
+
+```ruby
+ya_metrika_counter_params("LoggedIn", {:option1 => "one", :option2 => "two"})
+```
+## Event Tracking
+
+In your application controller, you may track an event. For example:
+
+```ruby
+ya_metrika_reach_goal("GOAL_NAME", {:option1 => "one", :option2 => "two"})
+
 ## Thread Safety
 
 This middleware *should* be thread safe. Although my experience in such areas is limited, having taken the advice of those with more experience; I defer the call to a shallow copy of the environment, if this is of consequence to you please review the implementation.
