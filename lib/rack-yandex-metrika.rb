@@ -4,7 +4,6 @@ require 'rack/yandex-metrika'
 
 require "tracking/counter_param"
 require "tracking/reach_goal"
-require "tracking/push"
 
 require "yandex-metrika/instance_methods"
 
