@@ -9,8 +9,8 @@ class TestRackYandexMetrika < Test::Unit::TestCase
         get "/"
         assert_match %r{\.push\(function\(\)}, last_response.body
         assert_match %r{w\.yaCounter111}, last_response.body
-        assert_match %r{</noscript>\n</head><body>}, last_response.body
-        assert_equal "727", last_response.headers['Content-Length']
+        assert_match %r{</script></head><body>}, last_response.body
+        assert_equal "795", last_response.headers['Content-Length']
       end
 
       should "not add tracker to non-html content-type" do
@@ -31,7 +31,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add webvisor support" do
         get "/"
         assert_match %r{webvisor:true}, last_response.body
-        assert_equal "742", last_response.headers['Content-Length']
+        assert_equal "810", last_response.headers['Content-Length']
       end
     end
 
@@ -40,7 +40,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add clickmap support" do
         get "/"
         assert_match %r{clickmap:true}, last_response.body
-        assert_equal "742", last_response.headers['Content-Length']
+        assert_equal "810", last_response.headers['Content-Length']
       end
     end
 
@@ -49,7 +49,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackLinks support" do
         get "/"
         assert_match %r{trackLinks:true}, last_response.body
-        assert_equal "744", last_response.headers['Content-Length']
+        assert_equal "812", last_response.headers['Content-Length']
       end
     end
 
@@ -58,7 +58,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add accurateTrackBounce support" do
         get "/"
         assert_match %r{accurateTrackBounce:true}, last_response.body
-        assert_equal "753", last_response.headers['Content-Length']
+        assert_equal "821", last_response.headers['Content-Length']
       end
     end
 
@@ -67,7 +67,7 @@ class TestRackYandexMetrika < Test::Unit::TestCase
       should "add trackHash support" do
         get "/"
         assert_match %r{trackHash:true}, last_response.body
-        assert_equal "743", last_response.headers['Content-Length']
+        assert_equal "811", last_response.headers['Content-Length']
       end
     end
   end

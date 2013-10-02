@@ -51,7 +51,7 @@ class TestRackYandexMetrikaInstanceMethods < Test::Unit::TestCase
         assert last_response.ok?
 
         assert_match %r{\.push\(function\(\)}, last_response.body
-        assert_match %r{w\.yaCounter111.reachGoal}, last_response.body
+        assert_match %r{\{yaCounter111.reachGoal}, last_response.body
         assert_match %r{Users}, last_response.body
         assert_match %r{login}, last_response.body
         assert_match %r{Success}, last_response.body
