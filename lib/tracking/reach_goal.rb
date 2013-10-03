@@ -6,7 +6,9 @@ module YandexMetrika
   # see http://help.yandex.ru/metrika/objects/reachgoal.xml
   class ReachGoal < Struct.new(:name, :value)
     def write
-      [self.name, self.value].to_json
+      goal = [self.name.to_json]
+      goal.push(self.value.to_json) if self.value
+      goal
     end
   end
 end
